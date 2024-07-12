@@ -1,0 +1,11 @@
+<script src="{{ url('public/assets/app/assets/libs/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{ url('public/assets/app/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ url('public/assets/app/dist/js/app-style-switcher.js')}}"></script>
+<script src="{{ url('public/assets/app/dist/js/waves.js')}}"></script>
+<script src="{{ url('public/assets/app/dist/js/sidebarmenu.js')}}"></script>
+<script src="{{ url('public/assets/app/dist/js/custom.js')}}"></script>
+<script src="{{ url('public/assets/app/assets/libs/chartist/dist/chartist.min.js')}}"></script>
+<script src="{{ url('public/assets/app/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js')}}"></script>
+<script src="{{ url('public/assets/app/dist/js/pages/dashboards/dashboard1.js')}}"></script>
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+<script src="{{ url('public/assets/app/js/paginathing.js')}}"></script>
