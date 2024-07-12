@@ -20,15 +20,6 @@ class AdminDashboardController extends Controller
         return view('pages.dashboard.index', ['cdrs' => $cdrs]);
     }
 
-    public function edit(Request $request)
-    {
-        $page_id = $request->page_id;
-        $response['blogs'] = Blogs::find($page_id);
-
-        // return response()->view('admin.pages.edit_page');
-        return view('pages.admin.blogs.edit')->with($response);
-        // echo $student;
-    }
 
     public function users()
     {
