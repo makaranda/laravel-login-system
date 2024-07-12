@@ -100,7 +100,7 @@
                             href="{{ URL::to('users') }}" aria-expanded="false"><i
                                 class="mdi mdi-account-network"></i><span class="hide-menu">Users</span></a></li>
                     <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link  {{ request()->routeIs('extensions*') ? 'active' : '' }}"
-                            href="#" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
+                            href="#composer require phpoffice/phpspreadsheet" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
                                 class="hide-menu">Extensions</span></a></li>
                 </ul>
 

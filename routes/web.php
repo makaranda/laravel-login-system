@@ -11,6 +11,7 @@ use App\Http\Controllers\dashboard\CdrsController;
 use App\Http\Controllers\dashboard\LoginController;
 use App\Http\Controllers\dashboard\UsersController;
 use App\Http\Controllers\dashboard\ExtensionsController;
+use App\Http\Controllers\dashboard\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,6 +56,7 @@ Route::group(['prefix' => '/'], function () {
     Route::group(['middleware' => 'admin.auth'], function () {
         Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
         Route::get('/users', [AdminDashboardController::class, 'users'])->name('admin.users');
+        Route::get('/export-excel', [DashboardController::class, 'excelExport'])->name('export.excell');
         Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.index');
         Route::get('/logout', [AdminDashboardController::class, 'logout'])->name('admin.logout');
 

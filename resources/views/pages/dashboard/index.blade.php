@@ -46,6 +46,7 @@
                                         <option value="2">Weekly</option>
                                         <option value="3">Yearly</option>
                                     </select>
+                                    <a href="{{ route('export.excell') }}" class="btn btn-sm btn-info">Download Excel</a>
                                 </div>
                             </div>
                         </div>
