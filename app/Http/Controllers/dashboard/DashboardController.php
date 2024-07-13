@@ -10,27 +10,27 @@ use App\Exports\CdrsExport;
 
 class DashboardController extends Controller
 {
+    protected $cdrs;
+
+    public function __construct(){
+
+        $this->cdrs = new Cdrs();
+
+    }
     public function excelExport(Request $request){
         $export_date = $request->export_date;
         $export_month = $request->export_month;
         $export_year = $request->export_year;
-
-        $query = Cdrs::query();
         //var_dump($export_date.'/'.$export_month.'/'.$export_year);
         if(!empty($export_date)){
-            //$cdrs = Cdrs::where('calldate', 'like', '%' . $export_date . '%')->get();
-            $query->where('calldate', 'like', '%' . $export_date . '%');
+            $cdrs = Cdrs::where('calldate', 'like', '%' . $export_date . '%')->get();
         }elseif(!empty($export_month)){
-            //$cdrs = Cdrs::where('calldate', 'like', '%' . $export_month . '%')->get();
-            $query->where('calldate', 'like', '%' . $export_month . '%');
+            $cdrs = Cdrs::where('calldate', 'like', '%' . $export_month . '%')->get();
         }elseif(!empty($export_year)){
-            //$cdrs = Cdrs::where('calldate', 'like', '%' . $export_year . '%')->get();
-            $query->where('calldate', 'like', '%' . $export_year . '%');
+            $cdrs = Cdrs::where('calldate', 'like', '%' . $export_year . '%')->get();
         } else {
-            //$cdrs = Cdrs::all();
+            $cdrs = Cdrs::all();
         }
-
-        $cdrs = $query->get();
         $time = time();
         //var_dump($cdrs);
         return Excel::download(new CdrsExport($cdrs), 'cdrs_'.$time.'.xlsx');
