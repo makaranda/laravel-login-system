@@ -40,13 +40,37 @@
                             </div>
                             <div class="ms-auto">
                                 <div class="dl">
-                                    <select class="form-select shadow-none">
-                                        <option value="0" selected>Monthly</option>
-                                        <option value="1">Daily</option>
-                                        <option value="2">Weekly</option>
-                                        <option value="3">Yearly</option>
-                                    </select>
-                                    <a href="{{ route('export.excell') }}" class="btn btn-sm btn-info">Download Excel</a>
+                                    <form class="row justify-content-end g-3" action="{{ route('export.excell') }}" method="GET">
+                                        <div class="col-auto">
+                                          <label for="staticDate" class="visually-hidden">Date</label>
+                                          <input type="date" class="form-control" name="export_date" id="staticDate" placeholder="{{ date('Y-m-d') }}">
+                                        </div>
+                                        <div class="col-auto">
+                                          <label for="staticMonth" class="visually-hidden">Month</label>
+                                          <select class="form-control form-select shadow-none" name="export_month" id="staticMonth">
+                                              <option value="">Select Month</option>
+                                              @for($x=1;$x <= 12;$x++)
+                                                @php
+                                                  $month_name = date("F", mktime(0, 0, 0, $x, 10));
+                                                @endphp
+                                                <option value="{{ $x }}">{{ $month_name }}</option>
+                                              @endfor
+                                          </select>
+                                        </div>
+                                        <div class="col-auto">
+                                          <label for="staticYear" class="visually-hidden">Year</label>
+                                          <select class="form-control form-select shadow-none" name="export_year" id="staticYear">
+                                              <option value="">Select Year</option>
+                                              @for($x=2024;$x <= 2034;$x++)
+                                                <option value="{{ $x }}">{{ $x }}</option>
+                                              @endfor
+                                          </select>
+                                        </div>
+                                        <div class="col-auto">
+                                          <button type="submit" class="btn btn-info mb-3">Get Export Excel</button>
+                                        </div>
+                                      </form>
+                                    {{-- <a href="{{ route('export.excell') }}" class="btn btn-sm btn-info">Download Excel</a> --}}
                                 </div>
                             </div>
                         </div>
