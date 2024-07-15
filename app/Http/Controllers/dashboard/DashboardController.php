@@ -21,7 +21,7 @@ class DashboardController extends Controller
         $export_date = $request->export_date;
         $export_month = $request->export_month;
         $export_year = $request->export_year;
-        //var_dump($export_date.'/'.$export_month.'/'.$export_year);
+
         if(!empty($export_date)){
             $cdrs = Cdrs::where('calldate', 'like', '%' . $export_date . '%')->get();
         }elseif(!empty($export_month)){
@@ -32,7 +32,7 @@ class DashboardController extends Controller
             $cdrs = Cdrs::all();
         }
         $time = time();
-        //var_dump($cdrs);
+
         return Excel::download(new CdrsExport($cdrs), 'cdrs_'.$time.'.xlsx');
 
     }
