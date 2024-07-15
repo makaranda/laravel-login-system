@@ -46,16 +46,7 @@
                             </div>
                             {{ Session::forget('message') }}
                         @endif
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        <form class="form-horizontal form-material mx-2" action="{{ route('profile.update',$users['id']) }}" method="POST">
+                        <form class="form-horizontal form-material mx-2" action="{{ route('users.update',$users['id']) }}" method="POST">
                             @csrf
                             <input type="hidden" name="user_id" value="{{ $users['id'] }}"/>
                             <div class="row">
@@ -103,18 +94,6 @@
                                                 <option value="admin">Admin</option>
                                             @endif
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="form-group col-12 col-md-6">
-                                    <label class="col-md-12">New Password</label>
-                                    <div class="col-md-12">
-                                        <input type="password" placeholder="***********" class="form-control form-control-line" name="newpassword" value="{{ $users['newpassword'] }}" autocomplete="off">
-                                    </div>
-                                </div>
-                                <div class="form-group col-12 col-md-6">
-                                    <label for="example-email" class="col-md-12">New Confirm Password</label>
-                                    <div class="col-md-12">
-                                        <input type="text" placeholder="***********" class="form-control form-control-line" name="newconfirmpassword" id="example-email" value="{{ $users['newconfirmpassword'] }}"  autocomplete="off">
                                     </div>
                                 </div>
 

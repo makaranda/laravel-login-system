@@ -48,21 +48,55 @@ class UserProfileController extends Controller
             } else {
 
 
-                $userData = [
-                    'username' => $request->username,
-                    'email' => $request->email,
-                    'privilege' => $request->privilege,
-                    'extensions' => $request->extensions,
-                    'status' => $request->status,
-                ];
+                if(!empty($request->newpassword) && !empty($request->newconfirmpassword)){
 
-                Session::put('message', 'User Updated Successfully.');
-                $UserDatas->update($userData);
+                    $validator = Validator::make($request->all(), [
+                        'username' => 'required',
+                        'email' => 'required|email',
+                        'newpassword' => 'required|min:8',
+                        'privilege' => 'required',
+                        'extensions' => 'required',
+                        'newconfirmpassword' => 'required|same:newpassword',
+                     ]);
+
+                    Session::forget('message');
+
+                    if ($validator->fails()) {
+                        Session::forget('message');
+
+                        return redirect()->Back()->withInput()->withErrors($validator);
+                    } else {
+
+
+                        $userData = [
+                            'username' => $request->username,
+                            'email' => $request->email,
+                            'privilege' => $request->privilege,
+                            'extensions' => $request->extensions,
+                            'status' => $request->status,
+                            'password' => Hash::make($request->newpassword),
+                        ];
+
+                        Session::put('message', 'User updated Successfully.');
+                        $UserDatas->update($userData);
+                        return redirect()->back();
+                    }
+
+                }else{
+                    $userData = [
+                        'username' => $request->username,
+                        'email' => $request->email,
+                        'privilege' => $request->privilege,
+                        'extensions' => $request->extensions,
+                        'status' => $request->status,
+                    ];
+                }
             }
         }else{
             Session::put('message', 'Sometyhing Wrong');
         }
-
+        Session::put('message', 'User Updated Successfully.');
+        $UserDatas->update($userData);
         // $this->blogs->create($request->all());
         return redirect()->back();
         // $user = Auth::user();

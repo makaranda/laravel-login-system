@@ -48,7 +48,7 @@ class UsersController extends Controller
         $response['users'] = User::find($page_id);
 
         // return response()->view('admin.pages.edit_page');
-        return view('pages.dashboard.profile')->with($response);
+        return view('pages.dashboard.userprofile')->with($response);
         // echo $student;
     }
 
@@ -67,14 +67,51 @@ class UsersController extends Controller
                 return redirect()->Back()->withInput()->withErrors($validator);
             } else {
 
+                //newpassword newconfirmpassword
+                if(!empty($request->newpassword) && !empty($request->newconfirmpassword)){
 
-                $userData = [
-                    'username' => $request->username,
-                    'email' => $request->email,
-                    'privilege' => $request->privilege,
-                    'extensions' => $request->extensions,
-                    'status' => $request->status,
-                ];
+                    $validator = Validator::make($request->all(), [
+                        'username' => 'required',
+                        'email' => 'required|email|unique:users,email',
+                        'password' => 'required|min:8',
+                        'privilege' => 'required',
+                        'extensions' => 'required',
+                        'confirmpassword' => 'required|same:password',
+                     ]);
+
+                    Session::forget('message');
+
+                    if ($validator->fails()) {
+                        Session::forget('message');
+
+                        return redirect()->Back()->withInput()->withErrors($validator);
+                    } else {
+
+
+                        $userData = [
+                            'username' => $request->username,
+                            'email' => $request->email,
+                            'privilege' => $request->privilege,
+                            'extensions' => $request->extensions,
+                            'status' => $request->status,
+                            'password' => Hash::make($request->newpassword),
+                        ];
+
+                        Session::put('message', 'User updated Successfully.');
+                        $UserDatas->update($userData);
+                        return redirect()->back();
+                    }
+
+                }else{
+                    $userData = [
+                        'username' => $request->username,
+                        'email' => $request->email,
+                        'privilege' => $request->privilege,
+                        'extensions' => $request->extensions,
+                        'status' => $request->status,
+                    ];
+                }
+
 
                 Session::put('message', 'User Updated Successfully.');
                 $UserDatas->update($userData);
