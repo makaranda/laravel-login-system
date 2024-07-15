@@ -46,7 +46,7 @@
                             </div>
                             {{ Session::forget('message') }}
                         @endif
-                        <form class="form-horizontal form-material mx-2" action="{{ route('users.update',$users['id']) }}" method="POST">
+                        <form class="form-horizontal form-material mx-2" action="{{ route('profile.update',$users['id']) }}" method="POST">
                             @csrf
                             <input type="hidden" name="user_id" value="{{ $users['id'] }}"/>
                             <div class="row">

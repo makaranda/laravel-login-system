@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\dashboard\CdrsController;
 use App\Http\Controllers\dashboard\LoginController;
 use App\Http\Controllers\dashboard\UsersController;
+use App\Http\Controllers\dashboard\UserProfileController;
 use App\Http\Controllers\dashboard\ExtensionsController;
 use App\Http\Controllers\dashboard\DashboardController;
 /*
@@ -60,7 +61,7 @@ Route::group(['prefix' => '/'], function () {
         Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.index');
         Route::get('/logout', [AdminDashboardController::class, 'logout'])->name('admin.logout');
 
-        Route::group(['prefix' => 'users'], function () {
+        Route::group(['prefix' => 'users', 'middleware' => 'role:admin'], function () {
             Route::get('/', [UsersController::class, 'index'])->name('admin.users');
             Route::get('/fetchusersAll', [UsersController::class, 'fetchuserAll'])->name('users.fetchusers');
             Route::post('/usersActive', [UsersController::class, 'userActive'])->name('users.userActive');
@@ -72,7 +73,12 @@ Route::group(['prefix' => '/'], function () {
             Route::post('/saveRecord', [UsersController::class, 'saveRecord'])->name('users.saveRecord');
         });
 
-        Route::group(['prefix' => 'extensions'], function () {
+        Route::group(['prefix' => 'profile'], function () {
+            Route::get('/{page_id}/edit', [UserProfileController::class, 'edit'])->name('profile.edit');
+            Route::post('/{page_id}/update', [UserProfileController::class, 'update'])->name('profile.update');
+        });
+
+        Route::group(['prefix' => 'extensions', 'middleware' => 'role:admin'], function () {
             Route::get('/{page_id}/edit', [ExtensionsController::class, 'edit'])->name('extensions.edit');
             Route::post('/{page_id}/update', [ExtensionsController::class, 'update'])->name('extensions.update');
         });

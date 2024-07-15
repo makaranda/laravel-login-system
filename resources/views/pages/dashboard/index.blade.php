@@ -28,7 +28,20 @@
     <div class="container-fluid">
 
         <div class="row">
-
+            <div class="col-12 col-md-12">
+                @if (Session::has('error'))
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <div class="row">
+                            <div class="col-12 col-md-12">
+                                <div><i class="fa fa-ban mr-2"></i>Error</div>
+                            </div>
+                            <div class="col-12 col-md-12">
+                                <p>{{ Session::get('error') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            </div>
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">

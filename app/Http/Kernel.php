@@ -72,5 +72,6 @@ class Kernel extends HttpKernel
         // Other middleware...
         //'admin.auth' => \App\Http\Middleware\AdminAuthenticate::class,
         // Add other middleware if necessary
+        'role' => \App\Http\Middleware\CheckRole::class,
     ];
 }

@@ -47,7 +47,7 @@
                             <img src="{{ url('public/assets/app/assets/images/users/1.jpg')}}" alt="user" class="rounded-circle" width="31">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('users.edit',Auth::guard('admin')->user()->id) }}"><i class="ti-user m-r-5 m-l-5"></i>
+                            <a class="dropdown-item" href="{{ route('profile.edit',Auth::guard('admin')->user()->id) }}"><i class="ti-user m-r-5 m-l-5"></i>
                                 My Profile</a>
                             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal"><i class="fa fa-power-off m-r-5 m-l-5"></i>
                                 Logout</a>
@@ -79,7 +79,7 @@
                                     <span class="op-5 user-email">{{ Auth::guard('admin')->user()->email }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="Userdd">
-                                    <a class="dropdown-item" href="javascript:void(0)"><i
+                                    <a class="dropdown-item" href="{{ route('profile.edit',Auth::guard('admin')->user()->id) }}"><i
                                             class="ti-user m-r-5 m-l-5"></i> My Profile</a>
                                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal"><i
                                             class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
