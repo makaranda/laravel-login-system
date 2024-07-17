@@ -13,9 +13,7 @@ class DashboardController extends Controller
     protected $cdrs;
 
     public function __construct(){
-
         $this->cdrs = new Cdrs();
-
     }
     public function excelExport(Request $request){
         $export_date = $request->export_date;
