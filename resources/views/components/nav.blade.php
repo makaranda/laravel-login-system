@@ -53,7 +53,6 @@
                                 Logout</a>
                         </ul>
                     </li>
-
                 </ul>
             </div>
         </nav>
@@ -67,7 +66,6 @@
                 <ul id="sidebarnav">
                     @auth
                         <li>
-
                             <div class="user-profile d-flex no-block dropdown m-t-20">
                                 <div class="user-pic"><img src="{{ url('public/assets/app/assets/images/users/1.jpg')}}" alt="users"
                                         class="rounded-circle" width="40" /></div>
@@ -86,7 +84,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </li>
                         {{-- <li class="p-15 m-t-10"><a href=s"javascript:void(0)"
                                 class="btn d-block w-100 create-btn text-white no-block d-flex align-items-center"><i
