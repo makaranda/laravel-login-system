@@ -57,7 +57,6 @@
     <aside class="left-sidebar" data-sidebarbg="skin6">
 
         <div class="scroll-sidebar">
-
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
                     @auth
