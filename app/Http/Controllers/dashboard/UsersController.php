@@ -21,7 +21,6 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
-
         // return response()->view('admin.pages.edit_page');
         return view('pages.dashboard.users', ['users' => $users]);
         // echo $student;
