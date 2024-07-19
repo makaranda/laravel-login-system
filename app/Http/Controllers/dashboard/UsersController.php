@@ -36,7 +36,6 @@ class UsersController extends Controller
         $users = $this->users->find($page_id);
         $users->delete();
         Session::forget('message');
-
         Session::put('message', 'User Deleted Successfully.');
         return redirect()->back();
     }
