@@ -44,7 +44,6 @@ class UsersController extends Controller
     {
         $page_id = $request->page_id;
         $response['users'] = User::find($page_id);
-
         // return response()->view('admin.pages.edit_page');
         return view('pages.dashboard.userprofile')->with($response);
         // echo $student;
