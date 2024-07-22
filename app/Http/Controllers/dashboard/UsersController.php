@@ -84,7 +84,6 @@ class UsersController extends Controller
                         return redirect()->Back()->withInput()->withErrors($validator);
                     } else {
 
-
                         $userData = [
                             'username' => $request->username,
                             'email' => $request->email,
