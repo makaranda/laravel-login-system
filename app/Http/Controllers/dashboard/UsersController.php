@@ -122,7 +122,6 @@ class UsersController extends Controller
 
     public function save(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'username' => 'required',
             'email' => 'required|email|unique:users,email',
